@@ -1,0 +1,7 @@
+= README
+
+A Helm chart for Tapir, a private Terraform registry.
+
+Source code can be found here:
+
+* <https://github.com/PacoVK/tapir>
