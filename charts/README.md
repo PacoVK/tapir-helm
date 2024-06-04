@@ -56,7 +56,7 @@ NAME: my-release
 | createClusterRoles | bool | `true` | Create roles for cluster-wide installation |
 | deployment.affinity | object | `{}` | Assign custom affinity rules to the deployment |
 | deployment.annotations | object | `{}` | Annotations to be added to `tapir` deployment |
-| deployment.configuration | object | `{"apiMaxBodySize":"100M","auth":{"attribute":{"email":"email","familyName":"family_name","givenName":"given_name","prefUsername":"preferred_username"},"clientID":"","clientSecret":"","endSessionPath":"/protocol/openid-connect/logout","endpoint":"","path":"","roleSource":"accesstoken","tokenPath":""},"backend":{"cosmosDB":{"endpoint":"","masterKey":""},"elasticsearch":{"host":""},"type":"dynamodb"},"gpg":{"keyArmor":"","keyID":""},"storage":{"azureBlob":{"bucketName":"tf-registry","connectionString":""},"localRegistry":{"hostname":"localhost","port":443},"s3":{"bucketName":"tf-registry","bucketRegion":"eu-central-1"},"storageAccessDuration":5,"type":"s3"}}` | Deployment's configuration, populates all the required environmental variables |
+| deployment.configuration | object | `{"apiMaxBodySize":"100M","auth":{"attribute":{"email":"email","familyName":"family_name","givenName":"given_name","prefUsername":"preferred_username"},"clientID":"","clientSecret":"","endSessionPath":"/protocol/openid-connect/logout","endpoint":"","path":"","roleSource":"accesstoken","tokenPath":""},"backend":{"cosmosDB":{"endpoint":"","masterKey":""},"elasticsearch":{"host":"","password":"","user":""},"type":"dynamodb"},"gpg":{"keyArmor":"","keyID":""},"storage":{"azureBlob":{"bucketName":"tf-registry","connectionString":""},"localRegistry":{"hostname":"localhost","port":443},"s3":{"bucketName":"tf-registry","bucketRegion":"eu-central-1"},"storageAccessDuration":5,"type":"s3"}}` | Deployment's configuration, populates all the required environmental variables |
 | deployment.configuration.apiMaxBodySize | string | `"100M"` | The maximum payload size for module/providers to be uploaded |
 | deployment.configuration.auth | object | `{"attribute":{"email":"email","familyName":"family_name","givenName":"given_name","prefUsername":"preferred_username"},"clientID":"","clientSecret":"","endSessionPath":"/protocol/openid-connect/logout","endpoint":"","path":"","roleSource":"accesstoken","tokenPath":""}` | OpenID Connect (OIDC) configuration |
 | deployment.configuration.auth.attribute | object | `{"email":"email","familyName":"family_name","givenName":"given_name","prefUsername":"preferred_username"}` | OIDC attribute names |
@@ -71,12 +71,14 @@ NAME: my-release
 | deployment.configuration.auth.path | string | `""` | Relative path or absolute URL of the OIDC authorization endpoint |
 | deployment.configuration.auth.roleSource | string | `"accesstoken"` | The source of the role claim in the access token |
 | deployment.configuration.auth.tokenPath | string | `""` | Relative path or absolute URL of the OIDC token endpoint which issues access and refresh tokens |
-| deployment.configuration.backend | object | `{"cosmosDB":{"endpoint":"","masterKey":""},"elasticsearch":{"host":""},"type":"dynamodb"}` | Database backend configuration |
+| deployment.configuration.backend | object | `{"cosmosDB":{"endpoint":"","masterKey":""},"elasticsearch":{"host":"","password":"","user":""},"type":"dynamodb"}` | Database backend configuration |
 | deployment.configuration.backend.cosmosDB | object | `{"endpoint":"","masterKey":""}` | CosmosDB backend configuration |
 | deployment.configuration.backend.cosmosDB.endpoint | string | `""` | CosmosDB endpoint |
 | deployment.configuration.backend.cosmosDB.masterKey | string | `""` | CosmosDB master key |
-| deployment.configuration.backend.elasticsearch | object | `{"host":""}` | Elasticsearch backend configuration |
+| deployment.configuration.backend.elasticsearch | object | `{"host":"","password":"","user":""}` | Elasticsearch backend configuration |
 | deployment.configuration.backend.elasticsearch.host | string | `""` | Elasticsearch host |
+| deployment.configuration.backend.elasticsearch.password | string | `""` | Elasticsearch password (optional) |
+| deployment.configuration.backend.elasticsearch.user | string | `""` | Elasticsearch username (optional) |
 | deployment.configuration.backend.type | string | `"dynamodb"` | One of: elasticsearch,dynamodb,cosmosdb |
 | deployment.configuration.gpg | object | `{"keyArmor":"","keyID":""}` | GPG configuration |
 | deployment.configuration.gpg.keyArmor | string | `""` | Ascii armored and bas64 encoded GPG public key (only RSA/DSA supported) |
