@@ -12,6 +12,14 @@ Generate Tapir configuration with environment variables.
 - name: BACKEND_ELASTICSEARCH_HOST
   value: {{ . }}
 {{- end }}
+{{- with $config.backend.elasticsearch.user }}
+- name: BACKEND_ELASTICSEARCH_USER
+  value: {{ . }}
+{{- end }}
+{{- with $config.backend.elasticsearch.password }}
+- name: BACKEND_ELASTICSEARCH_PASSWORD
+  value: {{ . }}
+{{- end }}
 {{- end }}
 {{- if (eq $config.backend.type "cosmosdb") }}
 {{- with $config.backend.cosmosDB.endpoint }}

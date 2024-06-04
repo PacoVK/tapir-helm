@@ -133,6 +133,10 @@ deployment:
       elasticsearch:
         # -- Elasticsearch host
         host: ""
+        # -- Elasticsearch username (optional)
+        user: ""
+        # -- Elasticsearch password (optional)
+        password: ""
 
       # -- CosmosDB backend configuration
       ## Applies if backend.type is equal to "cosmosdb"
