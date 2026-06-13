@@ -41,7 +41,7 @@ jobs:
         id: lint
         uses: helm/chart-testing-action@v2.6.1
         with:
-          version: v3.10.0
+          version: v3.14.0
 
       - name: List changed charts
         id: list-changed
