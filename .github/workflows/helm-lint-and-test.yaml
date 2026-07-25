@@ -33,7 +33,7 @@ jobs:
           version: v3.11.1
 
       - name: Set up python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: 3.9
 
